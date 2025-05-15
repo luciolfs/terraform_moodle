@@ -1,0 +1,53 @@
+Contextualização:
+
+MOODLE - É um sistema gerenciador  de conteúdo utilizado para criar cursos, utiliza sistema web e pode ser alocado na web.
+
+DESAFIO
+
+Instalação do Moodle utilizando docker 
+Montar arquitetura de (negocio; sistema; tecnologia)
+Requisitos:
+VM com SO linux
+Banco de dados Maria DB
+Docker e Docker Compose
+Terraform
+Git
+Php 8.1
+Apache 2.0
+Iniciar VM
+
+     Comando para instalação:
+
+sudo su
+sudo apt-get update 
+apt install curl -y 
+sudo apt-get install -y ca-certificates curl gnupg 
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg 
+sudo chmod a+r /etc/apt/keyrings/docker.gpg 
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null 
+sudo apt-get update 
+sudo apt-get install -y docker-compose-plugin 
+apt install docker.io -y 
+docker compose version
+apt install git -y
+      Preparação do ambiente para rodar a Docker
+      Criar um diretório com seu nome
+      mkdir [xxxxxxxx]
+      cd [xxxxxxxx]
+      git clone https://github.com/luciolfs/terraform_moodle.git
+      cd terraform_moodle
+      docker compose build
+      docker compose up -d
+      docker ps
+      
+
+       comando alternativo  -- não usar só quando for solicitado
+       docker exec -it moodleserver bash
+       ip a
+       nano config.php  
+       nano Dockerfile
+       nano docker-compose.yml
+       chown www-data:www-data /var/www/moodledata -R
+       docker compose down 
+      
