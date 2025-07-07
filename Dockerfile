@@ -116,6 +116,7 @@ RUN chown www-data:www-data /var/www/html -R
 
 #Cria o diretório de arquivos do moodle, concede permissão e altera dono e grupo do diretório
 RUN mkdir /var/www/moodledata \
+&& cd /var/www/moodledata \
 && chmod 0770 /var/www/moodledata -R \
 && chown www-data:www-data /var/www/moodledata -R
 
